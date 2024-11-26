@@ -11,8 +11,17 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 3rem;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#counter {
+  font-size: 3rem;
+}
+
+#random-Num {
+  padding: 20px;
+  list-style: none;
+  font-size: 2rem;
 }
 
 .row {

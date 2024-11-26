@@ -7,7 +7,7 @@ const form = document.querySelector('.form-field');
 let myNumbers = document.querySelectorAll('.memo-number');
 const btnCompare = document.querySelector('.btn-compare');
 
-let seconds = 2;
+let seconds = 10;
 counter.innerHTML = seconds--;
 
 const stopCounter = setInterval(function () {
@@ -23,7 +23,6 @@ const stopCounter = setInterval(function () {
   if (seconds > 0) {
     document.querySelector('.form-field').style.display = 'none';
   }
-
 }, 1000)
 
 randomGenerateNumber = [];
@@ -32,29 +31,45 @@ for (let i = 1; i <= 5; i++) {
   randomGenerateNumber.push(randomNumber)
   console.log(randomGenerateNumber);
 }
-document.getElementById('random-Num').innerHTML = randomGenerateNumber.join(' - ');
+document.getElementById('random-Num').innerHTML = randomGenerateNumber.join(" - ");
+
+
+
 
 btnCompare.addEventListener('click', () => {
   let numberToCompare = [];
   for (let i = 0; i < myNumbers.length; i++) {
-    numberToCompare.push(myNumbers[i].value);
+    numberToCompare.push(Number(myNumbers[i].value));
     myNumbers[i].value = '';
   }
-  console.log(numberToCompare);
+  console.log('Numeri inseriti:', numberToCompare);
 
-  const exactNumbers = false;
-  const someNumbers = false;
+  let exactNumbers = true;
+  let someNumbers = false;
+  let correctNumbers = [];
 
   for (let i = 0; i < numberToCompare.length; i++) {
-    if (numberToCompare[i] === randomGenerateNumber[i]) {
-      exactNumbers = true;
-      message.innerHTML = 'Hai indovinato tutti i numeri';
-    } else if (randomGenerateNumber.includes(numberToCompare[i])) {
-      someNumbers = true;
-      message.innerHTML = 'Alcuni numeri sono uguali';
+    let number = numberToCompare[i];
+    if (!randomGenerateNumber.includes(number)) {
+      exactNumbers = false;
     } else {
-      message.innerHTML = 'Non ci sono numeri in comune';
+      correctNumbers.push(number);
     }
   }
-})
 
+  for (let i = 0; i < numberToCompare.length; i++) {
+    let number = numberToCompare[i];
+    if (randomGenerateNumber.includes(number)) {
+      someNumbers = true;
+      correctNumbers.push(number);
+    }
+  }
+
+  if (exactNumbers && numberToCompare.length === randomGenerateNumber.length) {
+    message.innerHTML = `Hai indovinato tutti i numeri (${correctNumbers.join(', ')})`;
+  } else if (someNumbers) {
+    message.innerHTML = `Alcuni numeri sono uguali (${correctNumbers.join(', ')})`;
+  } else {
+    message.innerHTML = 'Non ci sono numeri in comune';
+  }
+});

@@ -1,7 +1,7 @@
 const counter = document.getElementById('counter');
-let randomGenerateNumber = document.getElementById('random-Num')
-
-
+const memo = document.getElementById('memo');
+let randomGenerateNumber = document.getElementById('random-Num');
+const form = document.querySelector('.form-field');
 
 let seconds = 10;
 counter.innerHTML = seconds--;
@@ -9,9 +9,17 @@ counter.innerHTML = seconds--;
 const stopCounter = setInterval(function () {
   counter.innerHTML = seconds;
   if (seconds === 0) {
-    clearInterval(stopCounter);
+    clearInterval(stopCounter)
+    document.getElementById('counter').style.display = 'none';
+    document.getElementById('memo').style.display = 'none';
+    document.getElementById('random-Num').style.display = 'none';
+    document.querySelector('.form-field').style.display = 'block';
   }
   seconds--
+  if (seconds > 0) {
+    document.querySelector('.form-field').style.display = 'none';
+  }
+
 }, 1000)
 
 

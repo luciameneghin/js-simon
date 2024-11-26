@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 body {
   height: 100vh;
   max-width: 98%;

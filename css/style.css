@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  max-width: 98%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 3rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.col-2 input {
+  width: 100px;
+  padding: 10px;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+}

@@ -17,8 +17,9 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 ## Logica
 - genero 5 numeri casuali e gli salvo in un array vuoto (sync)
 - il countdown parte all'apertura della pagina (sync)
+- non c'è il bottone
 - nascondo i numeri visualizzati che vengono salvati nel'array (async)
-- appare un form in cui inserire i 5 numeri(5 input number), creo un secondo array vuoto per inserire i numeri scritti dall'utente
+- appare un form in cui inserire i 5 numeri(5 input number), creo un secondo array vuoto per inserire i numeri scritti dall'utente e appare anche il bottone
 - clicco il bottone e appare scritta con quanti e quali numeri ho indovinato.
 se non ho indovinato numeri mostro un messaggio scritto in rosso con scritto 'nessun numero indovinato'
 altrimenti se gli ho indovinati tutti messaggio scritto in verde con la lista dei numeri

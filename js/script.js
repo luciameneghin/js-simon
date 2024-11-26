@@ -1,9 +1,13 @@
 const counter = document.getElementById('counter');
 const memo = document.getElementById('memo');
 let randomGenerateNumber = document.getElementById('random-Num');
+let message = document.querySelector('.message');
+// input e bottone
 const form = document.querySelector('.form-field');
+let myNumbers = document.querySelectorAll('.memo-number');
+const btnCompare = document.querySelector('.btn-compare');
 
-let seconds = 10;
+let seconds = 2;
 counter.innerHTML = seconds--;
 
 const stopCounter = setInterval(function () {
@@ -22,13 +26,35 @@ const stopCounter = setInterval(function () {
 
 }, 1000)
 
-
-
 randomGenerateNumber = [];
 for (let i = 1; i <= 5; i++) {
-  randomNumber = Math.floor(Math.random() * 50 + 1);
+  randomNumber = Math.floor(Math.random() * 50) + 1;
   randomGenerateNumber.push(randomNumber)
   console.log(randomGenerateNumber);
 }
-
 document.getElementById('random-Num').innerHTML = randomGenerateNumber.join(' - ');
+
+btnCompare.addEventListener('click', () => {
+  let numberToCompare = [];
+  for (let i = 0; i < myNumbers.length; i++) {
+    numberToCompare.push(myNumbers[i].value);
+    myNumbers[i].value = '';
+  }
+  console.log(numberToCompare);
+
+  const exactNumbers = false;
+  const someNumbers = false;
+
+  for (let i = 0; i < numberToCompare.length; i++) {
+    if (numberToCompare[i] === randomGenerateNumber[i]) {
+      exactNumbers = true;
+      message.innerHTML = 'Hai indovinato tutti i numeri';
+    } else if (randomGenerateNumber.includes(numberToCompare[i])) {
+      someNumbers = true;
+      message.innerHTML = 'Alcuni numeri sono uguali';
+    } else {
+      message.innerHTML = 'Non ci sono numeri in comune';
+    }
+  }
+})
+

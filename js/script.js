@@ -44,32 +44,23 @@ btnCompare.addEventListener('click', () => {
   }
   console.log('Numeri inseriti:', numberToCompare);
 
-  let exactNumbers = true;
-  let someNumbers = false;
+
   let correctNumbers = [];
-
-  for (let i = 0; i < numberToCompare.length; i++) {
-    let number = numberToCompare[i];
-    if (!randomGenerateNumber.includes(number)) {
-      exactNumbers = false;
-    } else {
-      correctNumbers.push(number);
-    }
-  }
-
   for (let i = 0; i < numberToCompare.length; i++) {
     let number = numberToCompare[i];
     if (randomGenerateNumber.includes(number)) {
-      someNumbers = true;
       correctNumbers.push(number);
     }
   }
 
-  if (exactNumbers && numberToCompare.length === randomGenerateNumber.length) {
+  if (correctNumbers.length === 5) {
+    message.classList.add('text-success');
     message.innerHTML = `Hai indovinato tutti i numeri (${correctNumbers.join(', ')})`;
-  } else if (someNumbers) {
+  } else if (correctNumbers.length < 5 && correctNumbers.length > 1) {
+    message.classList.add('text-warning');
     message.innerHTML = `Alcuni numeri sono uguali (${correctNumbers.join(', ')})`;
   } else {
+    message.classList.add('text-danger');
     message.innerHTML = 'Non ci sono numeri in comune';
   }
 });
